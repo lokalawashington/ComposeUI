@@ -1,6 +1,5 @@
 package com.example.composeui
 
-import android.icu.text.UnicodeSetSpanner.TrimOption
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,19 +11,23 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,25 +36,26 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.composeui.ui.theme.ComposeUITheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val wonderwoman = painterResource(id = R.drawable.wonderwoman)
             val tenet = painterResource(id = R.drawable.tenet)
-            val moneyheist = painterResource(id = R.drawable.moneyheist)
+            val starwatching = painterResource(id = R.drawable.starwatching)
             val monedas = painterResource(id = R.drawable.monedas)
             val darkmaterial = painterResource(id = R.drawable.darkmaterial)
             val industry = painterResource(id = R.drawable.industry)
+            val titanic = painterResource(id = R.drawable.titanic)
+            val chipmunks = painterResource(id = R.drawable.chipmunks)
             val nissan = painterResource(id = R.drawable.nissan)
 
             val description = "Compose UI"
+
 
             Column(
                 modifier = Modifier
@@ -62,6 +66,15 @@ class MainActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.Start
 
             ) {
+                TopAppBar(
+                    title = { Text(text = "Movve", style = TextStyle(color = Color.White, fontSize = 32.sp)) },
+                    actions = {
+                        IconButton(onClick = { /* Define your action here */ }) {
+                            Icon(Icons.Filled.Search, contentDescription = null)
+                        }
+                    },
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color.Black )
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text("Popular Movie", style = TextStyle(color = Color.White, fontSize = 18.sp))
                 Spacer(modifier = Modifier.height(8.dp))
@@ -89,14 +102,15 @@ class MainActivity : ComponentActivity() {
                             contentDescription = description,
                         )
                         Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
-                        Text("Aug 22, 2020", style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        Text(
+                            "Aug 22, 2020", style = TextStyle(color = Color.White, fontSize = 8.sp)
                         )
 
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = moneyheist,
+                            painter = starwatching,
                             contentDescription = description,
                         )
                         Text(
@@ -136,7 +150,10 @@ class MainActivity : ComponentActivity() {
                             painter = darkmaterial,
                             contentDescription = description,
                         )
-                        Text("His Dark Materials", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text(
+                            "His Dark Materials",
+                            style = TextStyle(color = Color.White, fontSize = 16.sp)
+                        )
                         Text(
                             "Nov 03, 2020",
                             style = TextStyle(color = Color.White, fontSize = 8.sp)
@@ -163,11 +180,11 @@ class MainActivity : ComponentActivity() {
 
                     Column() {
                         ImageCard(
-                            painter = nissan,
+                            painter = titanic,
                             contentDescription = description,
                         )
                         Text(
-                            "Wonder Women(1984)",
+                            "Titanic",
                             style = TextStyle(color = Color.White, fontSize = 16.sp)
                         )
 
@@ -175,10 +192,10 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = nissan,
+                            painter = chipmunks,
                             contentDescription = description,
                         )
-                        Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text("Alvin and Chipmunks", style = TextStyle(color = Color.White, fontSize = 16.sp))
 
                     }
                     Spacer(modifier = Modifier.width(8.dp))
@@ -187,7 +204,7 @@ class MainActivity : ComponentActivity() {
                             painter = nissan,
                             contentDescription = description,
                         )
-                        Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text("Nissan", style = TextStyle(color = Color.White, fontSize = 16.sp))
 
                     }
                 }
@@ -223,4 +240,13 @@ fun ImageCard(
             )
         }
     }
+}
+
+@Composable
+fun TopAppBar(
+    title: @Composable() () -> Unit,
+    color: Color = Color.Red,
+    navigationIcon: @Composable() (() -> Unit)? = null
+){
+
 }
