@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ScrollableTabRow
@@ -32,6 +33,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,65 +43,128 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val painter = painterResource(id = R.drawable.nissan)
-            val description = "Nissan is great"
-            val title = "Racing car"
+            val wonderwoman = painterResource(id = R.drawable.wonderwoman)
+            val tenet = painterResource(id = R.drawable.tenet)
+            val moneyheist = painterResource(id = R.drawable.moneyheist)
+            val monedas = painterResource(id = R.drawable.monedas)
+            val darkmaterial = painterResource(id = R.drawable.darkmaterial)
+            val industry = painterResource(id = R.drawable.industry)
+            val nissan = painterResource(id = R.drawable.nissan)
+
+            val description = "Compose UI"
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.Black)
-                    .padding(top = 32.dp),
+                    .padding(top = 32.dp, start = 8.dp, end = 8.dp)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.Start
 
             ) {
-                Text("Popular Movie", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                Spacer(modifier = Modifier.height(8.dp))
+                Text("Popular Movie", style = TextStyle(color = Color.White, fontSize = 18.sp))
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
 
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = wonderwoman,
                             contentDescription = description,
-                            title = title
                         )
                         Text(
                             "Wonder Women(1984)",
                             style = TextStyle(color = Color.White, fontSize = 16.sp)
                         )
+                        Text(
+                            "Des 16, 2020",
+                            style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
 
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = tenet,
                             contentDescription = description,
-                            title = title
                         )
                         Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text("Aug 22, 2020", style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
 
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = moneyheist,
                             contentDescription = description,
-                            title = title
                         )
-                        Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text(
+                            "Star Watching",
+                            style = TextStyle(color = Color.White, fontSize = 16.sp)
+                        )
+                        Text(
+                            "Nov 12, 2020",
+                            style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
 
                     }
                 }
-
-                Text("TV Show", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("TV Show", style = TextStyle(color = Color.White, fontSize = 18.sp))
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
 
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = monedas,
                             contentDescription = description,
-                            title = title
+                        )
+                        Text(
+                            "30 Monedas",
+                            style = TextStyle(color = Color.White, fontSize = 16.sp)
+                        )
+                        Text(
+                            "Nov 29, 2020",
+                            style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
+
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Column() {
+                        ImageCard(
+                            painter = darkmaterial,
+                            contentDescription = description,
+                        )
+                        Text("His Dark Materials", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text(
+                            "Nov 03, 2020",
+                            style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
+
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Column() {
+                        ImageCard(
+                            painter = industry,
+                            contentDescription = description,
+                        )
+                        Text("Industry", style = TextStyle(color = Color.White, fontSize = 16.sp))
+                        Text(
+                            "Nov 09, 2020",
+                            style = TextStyle(color = Color.White, fontSize = 8.sp)
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("Continue Watching", style = TextStyle(color = Color.White, fontSize = 18.sp))
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
+
+                    Column() {
+                        ImageCard(
+                            painter = nissan,
+                            contentDescription = description,
                         )
                         Text(
                             "Wonder Women(1984)",
@@ -110,9 +175,8 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = nissan,
                             contentDescription = description,
-                            title = title
                         )
                         Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
 
@@ -120,9 +184,8 @@ class MainActivity : ComponentActivity() {
                     Spacer(modifier = Modifier.width(8.dp))
                     Column() {
                         ImageCard(
-                            painter = painter,
+                            painter = nissan,
                             contentDescription = description,
-                            title = title
                         )
                         Text("Tenet", style = TextStyle(color = Color.White, fontSize = 16.sp))
 
@@ -141,12 +204,11 @@ class MainActivity : ComponentActivity() {
 fun ImageCard(
     painter: Painter,
     contentDescription: String,
-    title: String,
-    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = Modifier
-            .width(200.dp),
+            .width(160.dp)
+            .padding(end = 8.dp),
         shape = RoundedCornerShape(15.dp)
     ) {
         Box(
@@ -160,6 +222,5 @@ fun ImageCard(
                 contentScale = ContentScale.Crop
             )
         }
-
     }
 }
